@@ -7,3 +7,4 @@ Repository to study ASP.NET and C#
 * .NET Core
 * Entity Framework
 * OO in C#
+* C# in general
