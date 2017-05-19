@@ -8,4 +8,14 @@
     <ProjectReference Include="..\Todo.Model\Todo.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Member\" />
+    <Folder Include="Team\" />
+    <Folder Include="Task\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.0.2" />
+  </ItemGroup>
+
 </Project>
