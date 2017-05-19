@@ -4,11 +4,12 @@ using System.Text;
 
 namespace Todo.Model
 {
-    public class TaskModel
+    public class Task : IEntityBase
     {
         public int Id { get; set; }
         public string Content { get; set; }
-        public MemberModel Owner { get; set; }
+        public Member Owner { get; set; }
         public DateTime Due { get; set; }
+        public int Status { get; set; }
     }
 }
