@@ -24,54 +24,69 @@ namespace Todo.Data
             }
 
 
-            //modelBuilder.Entity<Member>()
-            //    .ToTable("Member");
+            modelBuilder.Entity<Member>()
+                .ToTable("Members");
 
-            //modelBuilder.Entity<Member>()
-            //    .Property(s => s.Id)
-            //    .IsRequired();
+            modelBuilder.Entity<Member>()
+                .Property(s => s.Id)
+                .ValueGeneratedOnAdd();
 
-            //modelBuilder.Entity<Member>()
-            //    .Property(s => s.DateCreated)
-            //    .HasDefaultValue(DateTime.Now);
+            modelBuilder.Entity<Member>()
+                .Property(s => s.Name)
+                .HasMaxLength(100)
+                .IsRequired();
 
-            //modelBuilder.Entity<Member>()
-            //    .Property(s => s.DateUpdated)
-            //    .HasDefaultValue(DateTime.Now);
+            modelBuilder.Entity<Member>()
+                .Property(s => s.Age)
+                .IsRequired();
 
-            //modelBuilder.Entity<Member>()
-            //    .Property(s => s.Type)
-            //    .HasDefaultValue(ScheduleType.Work);
+            modelBuilder.Entity<Member>()
+                .HasOne(s => s.Team)
+                .WithMany(s => s.Members);
 
-            //modelBuilder.Entity<Member>()
-            //    .Property(s => s.Status)
-            //    .HasDefaultValue(ScheduleStatus.Valid);
+            modelBuilder.Entity<Member>()
+                .HasMany(s => s.Tasks)
+                .WithOne(s => s.Owner);
 
-            //modelBuilder.Entity<Member>()
-            //    .HasOne(s => s.Creator)
-            //    .WithMany(c => c.SchedulesCreated);
+            modelBuilder.Entity<Model.Task>()
+                .ToTable("Tasks");
 
-            //modelBuilder.Entity<User>()
-            //  .ToTable("User");
+            modelBuilder.Entity<Model.Task>()
+                .Property(s => s.Id)
+                .ValueGeneratedOnAdd();
 
-            //modelBuilder.Entity<User>()
-            //    .Property(u => u.Name)
-            //    .HasMaxLength(100)
-            //    .IsRequired();
+            modelBuilder.Entity<Model.Task>()
+                .Property(s => s.Due)
+                .HasDefaultValue(DateTime.Now.AddDays(+1));
 
-            //modelBuilder.Entity<Attendee>()
-            //  .ToTable("Attendee");
+            modelBuilder.Entity<Model.Task>()
+                .Property(s => s.Description)
+                .IsRequired();
 
-            //modelBuilder.Entity<Attendee>()
-            //    .HasOne(a => a.User)
-            //    .WithMany(u => u.SchedulesAttended)
-            //    .HasForeignKey(a => a.UserId);
+            modelBuilder.Entity<Model.Task>()
+                .Property(s => s.Status)
+                .HasDefaultValue(Status.Created);
 
-            //modelBuilder.Entity<Attendee>()
-            //    .HasOne(a => a.Schedule)
-            //    .WithMany(s => s.Attendees)
-            //    .HasForeignKey(a => a.ScheduleId);
+            modelBuilder.Entity<Model.Task>()
+                .HasOne(s => s.Owner)
+                .WithMany(s => s.Tasks);
 
+            modelBuilder.Entity<Team>()
+                .ToTable("Teams");
+
+            modelBuilder.Entity<Team>()
+                .Property(s => s.Id)
+                .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Team>()
+                .Property(s => s.Name)
+                .HasMaxLength(120)
+                .IsRequired();
+
+            modelBuilder.Entity<Team>()
+                .HasMany(s => s.Members)
+                .WithOne(s => s.Team);
+            
         }
     }
 }
