@@ -55,17 +55,7 @@ namespace Todo.API
                 AutomaticChallenge = true,
                 TokenValidationParameters = tokenValidationParameters
             });
-
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
-                AutomaticAuthenticate = true,
-                AutomaticChallenge = true,
-                AuthenticationScheme = "Cookie",
-                CookieName = "access_token",
-                TicketDataFormat = new CustomJwtDataFormat(
-                    SecurityAlgorithms.HmacSha256,
-                    tokenValidationParameters)
-            });
+            
         }
 
         private Task<ClaimsIdentity> GetIdentity(string username, string password)
