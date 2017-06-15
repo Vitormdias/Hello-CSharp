@@ -7,13 +7,10 @@ using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json.Serialization;
 using System.Net;
 using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using System;
 
 namespace Todo.API
 {
-    public class Startup
+    public partial class Startup
     {
         public IConfigurationRoot Configuration { get; }
         private static string _applicationPath = string.Empty;
@@ -64,13 +61,7 @@ namespace Todo.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
-            //app.UseStaticFiles();
-            app.UseJwtBearerAuthentication(new JwtBearerOptions
-            {
-                AutomaticAuthenticate = true,
-                AutomaticChallenge = true,
-                TokenValidationParameters = BuildTokenValidationParamaters()
-            });
+            ConfigureAuth(app);
 
             app.UseCors(builder =>
                 builder.AllowAnyOrigin()
@@ -106,34 +97,6 @@ namespace Todo.API
             });
 
             TodoDbInitializer.Initialize(app.ApplicationServices);
-        }
-
-        public TokenValidationParameters BuildTokenValidationParamaters()
-        {
-            // secretKey contains a secret passphrase only your server knows
-            var secretKey = "worstsecretkeyever";
-            var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey));
-
-            return new TokenValidationParameters
-            {
-                // The signing key must match!
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = signingKey,
-
-                // Validate the JWT Issuer (iss) claim
-                ValidateIssuer = true,
-                ValidIssuer = "ExampleIssuer",
-
-                // Validate the JWT Audience (aud) claim
-                ValidateAudience = true,
-                ValidAudience = "ExampleAudience",
-
-                // Validate the token expiry
-                ValidateLifetime = true,
-
-                // If you want to allow a certain amount of clock drift, set that here:
-                ClockSkew = TimeSpan.Zero
-            };
         }
     }
 }

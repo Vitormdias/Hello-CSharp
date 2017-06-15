@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Data", "Todo.Data\Todo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Model", "Todo.Model\Todo.Model.csproj", "{F45C008E-DBF8-4663-8141-CF8A1F113496}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Security", "Todo.Security\Todo.Security.csproj", "{9701B8A9-721E-463E-89BD-4AD84184D79C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{F45C008E-DBF8-4663-8141-CF8A1F113496}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F45C008E-DBF8-4663-8141-CF8A1F113496}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F45C008E-DBF8-4663-8141-CF8A1F113496}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9701B8A9-721E-463E-89BD-4AD84184D79C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9701B8A9-721E-463E-89BD-4AD84184D79C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9701B8A9-721E-463E-89BD-4AD84184D79C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9701B8A9-721E-463E-89BD-4AD84184D79C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
