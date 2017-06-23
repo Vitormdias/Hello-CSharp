@@ -39,9 +39,9 @@ namespace Todo.API
             catch { }
 
             // Repositories
-            services.AddScoped<Todo.Data.Abstract.IMemberRepository, Data.Repositories.MemberRepository>();
+            services.AddScoped<Data.Abstract.IMemberRepository, Data.Repositories.MemberRepository>();
             services.AddScoped<Data.Abstract.ITeamRepository, Data.Repositories.TeamRepository>();
-            services.AddScoped < Data.Abstract.ITaskRepository, Data.Repositories.TaskRepository>();
+            services.AddScoped<Data.Abstract.ITaskRepository, Data.Repositories.TaskRepository>();
 
             // Automapper Configuration
             //AutoMapperConfiguration.Configure();
