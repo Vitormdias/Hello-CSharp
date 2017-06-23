@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Todo.Data\Todo.Data.csproj" />
     <ProjectReference Include="..\Todo.Model\Todo.Model.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Member\" />
     <Folder Include="Team\" />
     <Folder Include="Task\" />
   </ItemGroup>
