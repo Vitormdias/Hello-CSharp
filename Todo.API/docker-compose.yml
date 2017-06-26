@@ -6,3 +6,9 @@ services:
     build:
       context: ./Todo.API
       dockerfile: Dockerfile
+
+  db:
+    image: "microsoft/mssql-server-linux"
+    environment:
+      SA_PASSWORD: "your_password"
+      ACCEPT_EULA: "Y"
