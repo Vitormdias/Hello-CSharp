@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json.Serialization;
 using System.Net;
 using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 
 namespace Todo.API
 {
@@ -37,6 +38,19 @@ namespace Todo.API
                 useInMemoryProvider = bool.Parse(Configuration["AppSettings:InMemoryProvider"]);
             }
             catch { }
+
+            services.AddDbContext<TodoContext>(options => {
+                switch (useInMemoryProvider)
+                {
+                    case true:
+                        options.UseInMemoryDatabase();
+                        break;
+                    default:
+                        options.UseSqlServer(sqlConnectionString,
+                    b => b.MigrationsAssembly("Todo.API"));
+                        break;
+                }
+            });
 
             // Repositories
             services.AddScoped<Data.Abstract.IMemberRepository, Data.Repositories.MemberRepository>();
