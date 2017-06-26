@@ -1,17 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.API", "Todo.API\Todo.API.csproj", "{48482F3E-E582-4F25-8ED2-CB3AA7DDB44B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.API", "Todo.API\Todo.API.csproj", "{48482F3E-E582-4F25-8ED2-CB3AA7DDB44B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Business", "Todo.Business\Todo.Business.csproj", "{FE83ED07-98B3-4513-A1E2-9A2324167BA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Business", "Todo.Business\Todo.Business.csproj", "{FE83ED07-98B3-4513-A1E2-9A2324167BA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Data", "Todo.Data\Todo.Data.csproj", "{2E8BD44B-BE0D-432F-A590-37B8C59668FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Data", "Todo.Data\Todo.Data.csproj", "{2E8BD44B-BE0D-432F-A590-37B8C59668FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Model", "Todo.Model\Todo.Model.csproj", "{F45C008E-DBF8-4663-8141-CF8A1F113496}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Model", "Todo.Model\Todo.Model.csproj", "{F45C008E-DBF8-4663-8141-CF8A1F113496}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Security", "Todo.Security\Todo.Security.csproj", "{9701B8A9-721E-463E-89BD-4AD84184D79C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Security", "Todo.Security\Todo.Security.csproj", "{9701B8A9-721E-463E-89BD-4AD84184D79C}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{1D3281A6-901E-4386-A08E-B696AB692163}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{9701B8A9-721E-463E-89BD-4AD84184D79C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9701B8A9-721E-463E-89BD-4AD84184D79C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9701B8A9-721E-463E-89BD-4AD84184D79C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D3281A6-901E-4386-A08E-B696AB692163}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D3281A6-901E-4386-A08E-B696AB692163}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D3281A6-901E-4386-A08E-B696AB692163}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D3281A6-901E-4386-A08E-B696AB692163}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
