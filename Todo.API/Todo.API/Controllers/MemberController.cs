@@ -29,11 +29,20 @@ namespace Todo.API.Controllers
         }
 
         // GET api/values/5
-        [Authorize]
+        //[Authorize]
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Member Get(int id)
         {
-            return "value";
+            var member = new MemberService(memberRepository);
+
+            return member.GetSingle(id);
+        }
+
+        public IEnumerable<Member> GetAdult ()
+        {
+            var member = new MemberService(memberRepository);
+
+            return member.GetAdult();
         }
 
         // POST api/values
