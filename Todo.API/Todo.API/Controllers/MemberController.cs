@@ -25,7 +25,7 @@ namespace Todo.API.Controllers
         {
             var member = new MemberService(memberRepository);
 
-            return member.Get();
+            return member.GetAdult();
         }
 
         // GET api/values/5
