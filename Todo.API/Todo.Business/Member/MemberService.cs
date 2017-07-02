@@ -28,5 +28,22 @@ namespace Todo.Business.Member
         {
             return memberRepository.FindBy(member => member.Age > 18).OrderBy(x => x.Name).ToList();
         }
+
+        public void Add (Model.Member member){
+
+            memberRepository.Add(member);
+        }
+
+        public void Delete (Model.Member member){
+
+            memberRepository.Delete(member);
+
+        }
+
+        public void Update(Model.Member member){
+            
+            memberRepository.Update(member);
+        }
     }
 }
+
