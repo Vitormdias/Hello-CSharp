@@ -1,5 +1,6 @@
 ﻿using MailKit.Net.Smtp;
 using MailKit.Security;
+using Microsoft.Extensions.Configuration;
 using MimeKit;
 using System;
 
@@ -9,9 +10,15 @@ namespace Todo.Email
     {
         private const string SmtpServer = "smtp.gmail.com";
         private const int SmtpPortNumber = 465;
-        private const string FromAdress = ""; //Set username from email adress
+        private string FromAdress = ""; //Set username from email adress
         private const string FromAdressTitle = "TestIt";
-        private const string Password = ""; //Set password from email adress
+        private string Password = ""; //Set password from email adress
+
+        public EmailService(IConfiguration configuration)
+        {
+            this.FromAdress = configuration.GetSection("EmailOptions").GetSection("FromAdress").Value;
+            this.Password = configuration.GetSection("EmailOptions").GetSection("Password").Value;
+        }
 
         public bool Send(Email email)
         {
@@ -31,15 +38,8 @@ namespace Todo.Email
                 {
                     client.ServerCertificateValidationCallback = (s, c, h, e) => true;
 
-                    //client.Connect(SmtpServer, SmtpPortNumber, true);
-                    client.Connect("smtp.gmail.com", 465, SecureSocketOptions.SslOnConnect);
-                    // Note: only needed if the SMTP server requires authentication
-                    // Error 5.5.1 Authentication 
-                    //client.Authenticate(FromAdress, Password);
-                    //client.Connect(SmtpServer, SmtpPortNumber, SecureSocketOptions.StartTlsWhenAvailable);
+                    client.Connect(SmtpServer, SmtpPortNumber, SecureSocketOptions.SslOnConnect);
                     //client.AuthenticationMechanisms.Remove("XOAUTH2"); // Must be removed for Gmail SMTP
-                    //var uri = new Uri("smtps://smtp.gmail.com:465");
-                    //client.Connect(uri);
                     client.Authenticate(FromAdress, Password);
                     client.Send(mimeMessage);
                     Console.WriteLine("The mail has been sent successfully !!");
