@@ -4,6 +4,7 @@ using System.Text;
 using Todo.Model;
 using Todo.Data.Abstract;
 using System.Linq;
+using Todo.Email;
 
 namespace Todo.Business.Member
 {
@@ -26,7 +27,19 @@ namespace Todo.Business.Member
 
         public IEnumerable<Model.Member> GetAdult()
         {
-            return memberRepository.FindBy(member => member.Age > 18).OrderBy(x => x.Name).ToList();
+            var result = memberRepository.FindBy(member => member.Age > 18).OrderBy(x => x.Name).ToList();
+            var email = new Todo.Email.Email()
+            {
+                ToAdress = "",
+                ToAdressTitle = "",
+                Subject = "",
+                BodyContent = result.ToString()
+            };
+
+            var service = new EmailService();
+            service.Send(email);
+
+            return result;
         }
     }
 }
