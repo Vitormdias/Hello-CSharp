@@ -47,15 +47,16 @@ namespace Todo.API.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]Model.Member value)
+        public void Post([FromBody]Member value)
         {
             var member = new MemberService(memberRepository);
-            member.Add(value);
+
+            member.Save(value);
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put([FromBody]Model.Member value)
+        public void Put([FromBody]Member value)
         {
             var member = new MemberService(memberRepository);
 
@@ -64,10 +65,11 @@ namespace Todo.API.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(Model.Member value)
+        public void Delete(int id)
         {
             var member = new MemberService(memberRepository);
-            member.Delete(value);
+
+            member.Delete(id);
         }
     }
 }
