@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Todo.Model;
+﻿using System.Collections.Generic;
 using Todo.Data.Abstract;
 using System.Linq;
 using Todo.Email;
@@ -41,5 +38,37 @@ namespace Todo.Business.Member
 
             return result;
         }
+
+        public void Save (Model.Member member)
+        {
+            memberRepository.Add(member);
+
+            memberRepository.Commit();
+        }
+
+        public void Delete (int id)
+        {
+            Model.Member member = memberRepository.GetSingle(id);
+
+            if (member != null)
+            {
+                memberRepository.DeleteWhere(x => x.Id == id);
+
+                memberRepository.Commit();
+            }
+        }
+
+        public void Update(int id, Model.Member member)
+        {
+            Model.Member aux = memberRepository.GetSingle(id);
+            
+            if (member != null && aux.Id == member.Id)
+            {
+                memberRepository.Update(member);
+
+                memberRepository.Commit();
+            }
+        }
     }
 }
+
