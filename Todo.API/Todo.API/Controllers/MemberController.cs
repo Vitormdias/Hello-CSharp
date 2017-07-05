@@ -13,19 +13,17 @@ namespace Todo.API.Controllers
     [Route("api/[controller]")]
     public class MemberController : Controller
     {
-        private IMemberRepository memberRepository;
+        private IMemberService memberService;
         
-        public MemberController(IMemberRepository memberRepository)
+        public MemberController(IMemberService memberService)
         {
-            this.memberRepository = memberRepository;
+            this.memberService = memberService;
         }
         // GET api/member
         [HttpGet]
         public IEnumerable<Member> Get()
         {
-            var member = new MemberService(memberRepository);
-
-            return member.GetAdult();
+            return memberService.GetAdult();
         }
 
         // GET api/values/5
@@ -33,43 +31,33 @@ namespace Todo.API.Controllers
         [HttpGet("{id}")]
         public Member Get(int id)
         {
-            var member = new MemberService(memberRepository);
-
-            return member.GetSingle(id);
+            return memberService.GetSingle(id);
         }
 
         public IEnumerable<Member> GetAdult ()
         {
-            var member = new MemberService(memberRepository);
-
-            return member.GetAdult();
+            return memberService.GetAdult();
         }
 
         // POST api/values
         [HttpPost]
         public void Post([FromBody]Member value)
         {
-            var member = new MemberService(memberRepository);
-
-            member.Save(value);
+            memberService.Save(value);
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]Member value)
         {
-            var member = new MemberService(memberRepository);
-
-            member.Update(id, value);
+            memberService.Update(id, value);
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            var member = new MemberService(memberRepository);
-
-            member.Delete(id);
+            memberService.Delete(id);
         }
     }
 }
