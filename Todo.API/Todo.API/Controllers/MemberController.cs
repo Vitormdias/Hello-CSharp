@@ -56,11 +56,11 @@ namespace Todo.API.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put([FromBody]Member value)
+        public void Put(int id, [FromBody]Member value)
         {
             var member = new MemberService(memberRepository);
 
-            member.Update(value);
+            member.Update(id, value);
         }
 
         // DELETE api/values/5

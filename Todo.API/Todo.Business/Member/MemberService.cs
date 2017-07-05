@@ -45,10 +45,16 @@ namespace Todo.Business.Member
             }
         }
 
-        public void Update(Model.Member member)
+        public void Update(int id, Model.Member member)
         {
+            Model.Member aux = memberRepository.GetSingle(id);
             
-            memberRepository.Update(member);
+            if (member != null && aux.Id == member.Id)
+            {
+                memberRepository.Update(member);
+
+                memberRepository.Commit();
+            }
         }
     }
 }
