@@ -57,6 +57,7 @@ namespace Todo.API
             services.AddScoped<Data.Abstract.ITeamRepository, Data.Repositories.TeamRepository>();
             services.AddScoped<Data.Abstract.ITaskRepository, Data.Repositories.TaskRepository>();
             services.AddScoped<Business.Member.IMemberService, Business.Member.MemberService>();
+            services.AddScoped<Email.IEmailService, Email.EmailService>();
 
             // Automapper Configuration
             //AutoMapperConfiguration.Configure();

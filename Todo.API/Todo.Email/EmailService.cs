@@ -6,7 +6,7 @@ using System;
 
 namespace Todo.Email
 {
-    public class EmailService
+    public class EmailService : IEmailService
     {
         private const string SmtpServer = "smtp.gmail.com";
         private const int SmtpPortNumber = 465;
