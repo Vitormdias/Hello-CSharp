@@ -1,30 +1,65 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Text;
 using Todo.Business.Member;
-using Todo.Data.Abstract;
+using Todo.Model;
+using Todo.Tests;
 using Xunit;
 
-namespace Todo.Tests
+namespace Todo.Test
 {
     public class TestMemberService
     {
-        private IMemberRepository memberRepository;
-        //private MemberService memberService;
+        public IMemberService memberService;
+        private TestMemberRepository memberRepository;
+        private Member member;
+        private List<Member> list;
 
         public TestMemberService()
         {
-            //memberService = new MemberService(memberRepository);
+            member = new Member
+            {
+                Id = 1,
+                Name = "Vitor",
+                Age = 19,
+                TeamId = 1
+            };
+
+            list = new List<Member>();
+            list.Add(member);
+
+            memberRepository = new TestMemberRepository(list);
+            memberService = new MemberService(memberRepository);
         }
 
         [Fact]
-        public void TestGetAdult()
+        public void TestGetMember()
         {
-            var service = new MemberService(memberRepository);
-            var result = service.GetAdult();
-       
-            Assert.True(result != null);
+            var result = memberService.Get();
+            Assert.Equal(list, result);
         }
 
+        [Theory]
+        [InlineData(1)]
+        public void TestGetSingleMember(int id)
+        {
+            var result = memberService.GetSingle(id);
+            Assert.Equal(member, result);
+        }
+
+        [Fact]
+        public void AddAndFoundMember()
+        {
+            var m = new Member
+            {
+                Id = 2,
+                Name = "Medson",
+                Age = 20,
+                TeamId = 1
+            };
+
+            memberService.Save(m);
+            var result = memberService.GetSingle(m.Id);
+            Assert.Equal(m, result);
+        }
     }
 }
