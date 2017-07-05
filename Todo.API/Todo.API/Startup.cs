@@ -22,7 +22,7 @@ namespace Todo.API
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
 
@@ -56,6 +56,7 @@ namespace Todo.API
             services.AddScoped<Data.Abstract.IMemberRepository, Data.Repositories.MemberRepository>();
             services.AddScoped<Data.Abstract.ITeamRepository, Data.Repositories.TeamRepository>();
             services.AddScoped<Data.Abstract.ITaskRepository, Data.Repositories.TaskRepository>();
+            services.AddScoped<Business.Member.IMemberService, Business.Member.MemberService>();
 
             // Automapper Configuration
             //AutoMapperConfiguration.Configure();
