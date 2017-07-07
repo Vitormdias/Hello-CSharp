@@ -5,6 +5,7 @@ using Todo.Email;
 using Todo.Business;
 using System;
 using Microsoft.Extensions.Configuration;
+using Todo.Files;
 
 namespace Todo.Business.Member
 {
@@ -40,6 +41,10 @@ namespace Todo.Business.Member
 
             //var service = new EmailService(configuration);
             //service.Send(email);
+            var storage = new BlobService();
+            storage.Init();
+            //storage.Upload();
+            //storage.DownloadAsync();
 
             return result;
         }

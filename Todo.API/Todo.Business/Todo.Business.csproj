@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Todo.Data\Todo.Data.csproj" />
     <ProjectReference Include="..\Todo.Email\Todo.Email.csproj" />
+    <ProjectReference Include="..\Todo.Files\Todo.Files.csproj" />
     <ProjectReference Include="..\Todo.Model\Todo.Model.csproj" />
   </ItemGroup>
 
